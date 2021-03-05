@@ -20,7 +20,7 @@ double getMaximumTemperature(vector<WeatherReport>) {
   double max = -9999;
   for (int i = 0; i < reports.size(); i++){
     if (max < reports[i].getTemperature()){
-      max = reports[i].getTemperature();
+      max = reports[i].getTemperature(); 
     }
   }
   return max;
