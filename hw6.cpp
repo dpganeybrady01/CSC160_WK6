@@ -14,18 +14,44 @@ using std::stringstream;
 /*
   STUDENT: Write a function that will take a 
   vector of WeatherReport and return the max temperature
+
 */
+double getMaximumTemperature(vector<WeatherReport>) {
+  double max = -9999;
+  for (int i = 0; i < reports.size(); i++){
+    if (max < reports[i].getTemperature()){
+      max = reports[i].getTemperature();
+    }
+  }
+  return max;
+}
 
 /*
   STUDENT: write a function that will take a vector of 
   WeatherReport and return the average wind speed
+
 */
+double getAverageWindSpeed(vector<WeatherReport> reports) {
+  double sum = 0;
+  for (int i = 0; i < reports.size(); i++){
+    sum += reports[i].getWindSpeed();
+  }
+  double avg = sum / reports.size();
+  return avg;
+}
 
 /*
   STUDENT: write a function that will take a vector of 
   WeatherReport and return a vector of double that contains
   the temperature values from the vector of weather report
 */
+vector<double> getTemperatureValues(vector<WeatherReport> reports) {
+  vector<double> values;
+  for (int i=0; reports.size(); i++) {
+    values.push_back(reports[i].getMaximumTemperature());
+  }
+  return values; 
+}
 
 /*
   STUDENT: write a function that will take a vector of
@@ -35,7 +61,14 @@ using std::stringstream;
   The purpose of this is to split up the list of weather 
   reports into a smaller list.
 */
-
+vector<WeatherReport> splitReports(vector<WeatherReport> reports, double percentage){
+  vector<WeatherReport> smaller;
+  double smallerSize = reports.size() * percentage;
+  for (int i = 0; i < smallerSize; i++){
+    smaller.push_back(reports[i]);
+  }
+  return result;
+}
 
 
 vector<string> splitLine(string line) {
@@ -115,6 +148,10 @@ int main() {
       string location = it->first; //first is the key, the location
       vector<WeatherReport> reports = it->second; //second is the value, the reports for this location
       cout << location << " - " << reports.size() << endl;
+
+      vector<WeatherReport> smaller = splitReports(reports, 0.35);
+
+      cout << "smaller size is " << smaller.size() << endl;
 
       //STUDENT: using your function above that will return 80% of the 
       // values, get two vector of WeatherReports for this station
